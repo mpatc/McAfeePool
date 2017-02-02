@@ -6,7 +6,7 @@ Install BTC.COM Pool
 
 ## Build
 
-If you are the first time build btcpool, you could run `bash install/install_btcpool.sh` instead of exec these shell commands one by one.
+If this is your first time building McAfeePool, you can run `bash install/install_btcpool.sh` instead of executing these shell commands one by one.
 
 ```
 cd /work
@@ -82,7 +82,7 @@ make
 
 ## Init btcpool
 
-Now create folder for btcpool, if you are going to run all service in one machine you could run `install/init_folders.sh` as below.
+Now create folder for mcafeepool, if you are going to run all service in one machine you could run `install/init_folders.sh` as below.
 
 ```
 cd /work/btcpool/build
@@ -100,8 +100,8 @@ cd /work/kafka
 # "10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181" is ZooKeeper cluster.
 #
 ./bin/kafka-topics.sh --create --topic RawGbt         --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1
-./bin/kafka-topics.sh --create --topic StratumJob     --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1 
-./bin/kafka-topics.sh --create --topic SolvedShare    --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 3 --partitions 1 
+./bin/kafka-topics.sh --create --topic StratumJob     --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1
+./bin/kafka-topics.sh --create --topic SolvedShare    --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 3 --partitions 1
 ./bin/kafka-topics.sh --create --topic ShareLog       --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1
 ./bin/kafka-topics.sh --create --topic NMCAuxBlock    --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1
 ./bin/kafka-topics.sh --create --topic NMCSolvedShare --zookeeper 10.0.0.1:2181,10.0.0.2:2181,10.0.0.3:2181 --replication-factor 2 --partitions 1
@@ -134,9 +134,9 @@ Topic:NMCSolvedShare     PartitionCount:1         ReplicationFactor:3      Confi
          Topic: NMCSolvedShare    Partition: 0     Leader: 3        Replicas: 3,1  Isr: 3,1
 ```
 
-Before you start btcpool's services, you need to stetup MySQL database and bitcoind/namecoind (if enable merged mining).
+Before you start mcafeepool's services, you need to setup a MySQL database and bitcoind + namecoind (if you're enabling merged mining).
 
-Init MySQL database tables.
+Initialize MySQL database tables.
 
 ```
 #
@@ -154,11 +154,11 @@ mysql -uxxxx -p -h xxx.xxx.xxx bpool_local_stats_db < install/bpool_local_stats_
 
 ```
 
-**User list API** 
+**User list API**
 
-You need to implement a HTTP API for stratum server. The API is use to fetch user list in incremental model. Stratum Server will call this API every few seconds, interval is about 10 seconds. When Stratum Server start, it will fetch again and again util no more users.
+You need to implement an HTTP API for the stratum server. The API is used to fetch a user list in incremental model. The Stratum Server will call this API every few seconds, the interval is about 10 seconds. When Stratum Server starts, it will keep fetching until no more users are returned.
 
-Should works as below.
+Below should work.
 
 ```
 #
@@ -176,7 +176,7 @@ $ curl http://xxx.xxx.xxx/GetUserList?last_id=8
 {"err_no":0,"err_msg":null,"data":{}}
 ```
 
-Use `supervisor` to manager services.
+Use `supervisor` to manage services.
 
 
 ```
@@ -193,8 +193,8 @@ cp ../install/supervisord/jobmaker.conf      /etc/supervisor/conf.d
 cp ../install/supervisord/blkmaker.conf      /etc/supervisor/conf.d
 cp ../install/supervisord/sharelogger.conf   /etc/supervisor/conf.d
 #
-# if you need to enable watch other pool's stratum job. poolwatcher will 
-# generate empty getblocktemplate when they find a new height stratum job 
+# if you need to enable watch other pool's stratum job. poolwatcher will
+# generate empty getblocktemplate when they find a new height stratum job
 # from other pools. this could reduce pool's orphan block rate.
 #
 cp ../install/supervisord/poolwatcher.conf   /etc/supervisor/conf.d
@@ -239,7 +239,7 @@ $ supervisorctl
 
 ## Upgrade btcpool
 
-Check release note and upgrade guide. Maybe add some config options to config file or change something of database table. 
+Check release note and upgrade guide. Maybe add some config options to config file or change something of database table.
 
 Get the latest codes and rebuild:
 

@@ -17,7 +17,7 @@ Until the pool is formally launched, this code should be assumed to be not ready
 
 ![Architecture](docs/btcpool.png)
 
-## Install
+## How To Install
 
 1. Install `Zookeeper`, or see [INSTALL-ZooKeeper.md](https://github.com/btccom/btcpool/blob/master/docs/INSTALL-ZooKeeper.md)
   * [https://zookeeper.apache.org/](https://zookeeper.apache.org/)
