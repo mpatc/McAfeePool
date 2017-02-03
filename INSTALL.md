@@ -1,4 +1,4 @@
-Install BTC.COM Pool
+Install McAfee Pool
 =====================
 
 * OS: `Ubuntu 14.04 LTS, 64 Bits`
