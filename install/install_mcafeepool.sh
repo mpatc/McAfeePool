@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-# init install script for btcpool
+# init install script for mcafeepool
 #
 # OS: Ubuntu 14.04 LTS
-# 
-# @copyright btc.com
-# @author Kevin Pan
-# @since 2016-08
+#
+# @copyright mgtci
+# @author matthew clancy
+# @forkd from btc.com 2017-2
 #
 
 CPUS=`lscpu | grep '^CPU(s):' | awk '{print $2}'`
@@ -47,11 +47,10 @@ cd libevent-2.0.22-stable
 make -j $CPUS
 make install
 
-# btcpool
+# mcafeepool
 mkdir -p /work && cd /work
-git clone https://github.com/btccom/btcpool.git
+git clone https://github.com/mpatc/McAfeePool.git
 cd /work/btcpool
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j $CPUS
-

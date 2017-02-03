@@ -6,7 +6,7 @@ Install McAfee Pool
 
 ## Build
 
-If this is your first time building McAfeePool, you can run `bash install/install_btcpool.sh` instead of executing these shell commands one by one.
+If this is your first time building McAfeePool, you can run `bash install/install_mcafeepool.sh` instead of executing these shell commands one by one.
 
 ```
 cd /work
