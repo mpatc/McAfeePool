@@ -39,7 +39,7 @@ BtcAgent is a type of stratum proxy which uses a customized protocol to communic
 
 ## Testing
 
-You can run `simulator` to test the system. It will simulate a lots of miners, but first you need to enbale config `enable_simulator` on your Stratum Server.
+You can run `simulator` to test the system. It will simulate lots of miners, but first you need to enable config flag `enable_simulator` on your Stratum Server.
 
 ## License
 McAfeePool is released under the terms of the MIT license. See [LICENSE](LICENSE) for more information or see [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT).
